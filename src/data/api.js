@@ -18,18 +18,17 @@ async function fetchAPI(query, { variables } = {}) {
 }
 
 export async function getAllPagesWithSlugs() {
-    const data = await fetchAPI(`
+  const data = await fetchAPI(`
     {
-      pages(first: 10000) {
-        edges {
-          node {
-            slug
-          }
+      pages {
+        nodes {
+          title
+          slug
         }
       }
     }
-    `);
-    return data?.pages;
+  `);
+  return data?.pages;
 }
 
 export async function getPageBySlug(slug) {
